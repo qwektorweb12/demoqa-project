@@ -1,4 +1,9 @@
+import time
 from abc import ABC
+
+from selenium import webdriver
+from selenium.webdriver.support import expected_conditions as EC
+
 
 
 class BasePage(ABC):
@@ -28,4 +33,26 @@ class BasePage(ABC):
     def click(self, locator):
         element = self.driverfind_element(*locator)
         element.click()
-        
+
+    def wait_presence_of_element_located(self, locator):
+        self.wait.until(EC.presence_of_element_located)
+
+    def wait_element_to_be_clickable(self, located):
+        self.wait.until(EC.element_to_be_clickable)
+
+    def wait_visibility_of_element_locator(self, locator):
+        self.wait.until(EC.visibility_of_element_located(locator))
+
+    def find_element_with_presence(self, locator):
+        self.wait_presence_of_element_located(locator)
+        element = self.driver.find_element(locator)    
+        return element
+
+    def find_element_with_clickable(self, locator):
+        self.wait_presence_to_be_clickable(locator)
+        return self.driver.find_element(locator)
+
+    def find_element_with_visible(self, locator):
+        self.wait_visibility_of_element_locator(locator)
+        element = self.driver.find_element(*locator)
+        return element
