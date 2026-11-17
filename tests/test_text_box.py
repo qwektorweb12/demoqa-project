@@ -21,4 +21,10 @@ class TestTextBoxPage:
             text_box_page.get_text(TextBoxPage.TITLE_H1)
             == data.TITLE_H1_TEXT_BOX
         )
+
+    def test_text_box_with_expected_data(self, driver):
+        text_box_page = TextBoxPage(driver)
+        text_box_page.open(data.TEXT_BOX)
+        
+        time.sleep(10)
         

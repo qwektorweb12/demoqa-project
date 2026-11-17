@@ -20,3 +20,12 @@ class BasePage(ABC):
     def get_text(self, locator):
         element = self.driver.find_element(*locator)
         return element.text
+
+    def input(self, locator, text):
+        element = self.driver.find_element(*locator)
+        element. send_keys(text)
+
+    def click(self, locator):
+        element = self.driverfind_element(*locator)
+        element.click()
+        
