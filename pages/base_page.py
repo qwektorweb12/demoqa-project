@@ -50,9 +50,11 @@ class BasePage(ABC):
 
     def find_element_with_clickable(self, locator):
         self.wait_presence_to_be_clickable(locator)
+        element = self.driver.find_element(*locator)
         return self.driver.find_element(locator)
 
     def find_element_with_visible(self, locator):
         self.wait_visibility_of_element_locator(locator)
         element = self.driver.find_element(*locator)
         return element
+    
